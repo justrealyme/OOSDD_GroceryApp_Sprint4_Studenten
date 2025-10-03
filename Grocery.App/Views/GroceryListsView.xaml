@@ -6,6 +6,13 @@
              xmlns:m="clr-namespace:Grocery.Core.Models;assembly=Grocery.Core"
              x:DataType="vm:GroceryListViewModel"
              Title="GroceryListsView">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{Binding Source={RelativeSource AncestorType={x:Type vm:GroceryListViewModel}}, Path=BindingContext.Client.Name}" 
+                     Command="{Binding ShowBoughtProductsCommand}" 
+                     IconImageSource="{FontImage Glyph='&#xf007;', Color=Black, Size=22}" />
+    </ContentPage.ToolbarItems>
+
     <Shell.TitleView>
         <Grid>
             <Label Text="Boodschappenlijsten" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center" />
@@ -13,10 +20,10 @@
     </Shell.TitleView>
 
     <Border Stroke="#C49B33"
-        StrokeThickness="4"
-        Padding="10"
-        Margin="10"
-        HorizontalOptions="Center">
+            StrokeThickness="4"
+            Padding="10"
+            Margin="10"
+            HorizontalOptions="Center">
         <CollectionView x:Name="GroceryListView" ItemsSource="{Binding GroceryLists}" HorizontalOptions="Center"
                         SelectionMode="Single"
                         SelectionChangedCommand="{Binding SelectGroceryListCommand}"
